@@ -27,4 +27,4 @@ To run a dev server, run this command from the root of the project folder
 ```
 ng serve
 ```
-This will start a server on http://localhost:4200. There should still be a live demo at https://PatrickSison.github.io/angular-alert/dashboard/
+This will start a server on http://localhost:4200. There should still be a live demo at https://PatrickSison.github.io/angular-alert-dashboard/
