@@ -1,0 +1,137 @@
+<div class="p-3">
+	<div class="row">
+		<!-- Filters -->
+		<div class="col-md-2">
+			<h3>Filters</h3>
+			<br />
+			<div class="p-3">
+				<strong>Severity</strong>
+				<hr />
+				<a href="#">WIP</a>
+				<br />
+				<a href="#">WIP</a>
+			</div>
+			<div class="p-3">
+				<strong>Protocol</strong>
+				<hr />
+				<a href="#">WIP</a>
+				<br />
+				<a href="#">WIP</a>
+			</div>
+			<div class="p-3">
+				<strong>Client IP</strong>
+				<hr />
+				<a href="#">WIP</a>
+				<br />
+				<a href="#">WIP</a>
+				<br />
+			</div>
+		</div>
+
+		<!-- Main Content + Detail View -->
+		<div class="col-md-10">
+			<div class="row p-0">
+				<div class="col">
+
+					<!-- Alerts Table -->
+					<div class="row">
+						<div class="col-md-7">
+							<h3 class="p-3">Alerts ({{(alerts | table: searchString)?.length || 0}})</h3>
+						</div>
+						<div class="col-md-5 p-3">
+							<input class="form-control" placeholder="Search" type="text" [(ngModel)]="searchString">
+						</div>
+					</div>
+					<div>
+						<table class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th scope="col">AlertId</th>
+									<th scope="col">AlertTime</th>
+									<th scope="col">Severity</th>
+									<th scope="col">ClientIP</th>
+									<th scope="col">ServerIP</th>
+									<th scope="col">Protocol</th>
+									<th scope="col">ClientCountry</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let alert of alerts | table: searchString:currentPage" (click)="openDetails(alert)" [ngClass]="{'table-primary': alert.AlertId == detailAlert?.AlertId}">
+									<td>{{alert.AlertId}}</td>
+									<td>{{alert.AlertTime}}</td>
+									<td [ngClass]="{'text-success': alert.Severity == 'Low', 'text-warning': alert.Severity == 'Medium', 'text-danger': alert.Severity == 'High' }">
+										{{alert.Severity}}
+									</td>
+									<td>{{alert.ClientIP}}</td>
+									<td>{{alert.ServerIP}}</td>
+									<td>{{alert.Protocol}}</td>
+									<td>{{alert.ClientCountry}}</td>
+								</tr>
+							</tbody>
+							<pagination [totalItems]="(alerts | table: searchString)?.length || 0" [(ngModel)]="currentPage"></pagination>
+						</table>
+					</div>
+					<!-- End of Alerts Table -->
+
+				</div>
+
+				<!-- Detail View for alert -->
+				<div class="col-sm-3" *ngIf="detailAlert">
+					<h2> Alert Details #{{detailAlert.AlertId}}</h2>
+					<hr />
+					<div class="row">
+						<div class="col-sm-6">AlertId</div>
+						<div class="col-sm-6">{{detailAlert.AlertId}}</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">AlertTime</div>
+						<div class="col-sm-6">{{detailAlert.AlertTime}}</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">Severity</div>
+						<div class="col-sm-6" [ngClass]="{'text-success': detailAlert.Severity == 'Low', 'text-warning': detailAlert.Severity == 'Medium', 'text-danger': detailAlert.Severity == 'High' }">
+							{{detailAlert.Severity}}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">ClientIP</div>
+						<div class="col-sm-6">{{detailAlert.ClientIP}}</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">SeverIP</div>
+						<div class="col-sm-6">{{detailAlert.ServerIP}}</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">Protocol</div>
+						<div class="col-sm-6">{{detailAlert.Protocol}}</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">ClientCountry</div>
+						<div class="col-sm-6">{{detailAlert.ClientCountry}}</div>
+					</div>
+				</div>
+				<!-- End of Detailed Alert view -->
+
+
+			</div>
+			<!-- Statistics and Visualization -->
+			<h3 class="p-3">Statistics</h3>
+			<div class="row">
+				<div class="col-md-4">
+					<div style="display: block">
+						<canvas baseChart [data]="alertsTypeData" [labels]="alertChartLabels" [chartType]="chartType" [colors]="chartColors" [legend]=legend></canvas>
+					</div>
+					<h4 class="text-center">Alert Severity</h4>
+				</div>
+				<div class="col-md-4">
+					Placeholder
+				</div>
+				<div class="col-md-4">
+					Placeholder
+				</div>
+
+			</div>
+			<!-- End Statistics -->
+		</div>
+	</div>
+</div>
