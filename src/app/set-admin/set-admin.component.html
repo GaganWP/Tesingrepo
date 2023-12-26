@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<div class="row mx-2">
+  <div class="col-12"><h1 class=" d-flex justify-content-center">Set Admin</h1></div>
+</div>
+
+<h4 class="p-3"><a style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: x-large;" href="javascript:history.go(-1);">Go Back</a></h4>
+
+
+
+
+  <!-- <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="form-outline mb-2">
+        <input type="name" id="form2Example11" class="form-control" [(ngModel)]="acctid"
+          placeholder="Enter Organisation AccountId" />
+        <label class="form-label" for="form2Example11">Organisation AccountId</label>
+      </div>
+    </div>
+  </div> -->
+   
+  
+  
+  <div class="row justify-content-center mx-2">
+    <div class="col-4">
+      <!-- <div class="form-outline mb-2">
+        <input type="tel" id="form2Example11" class="form-control" [(ngModel)]="msisdn" maxlength="8"
+          placeholder="Enter MSISDN" />
+        <label class="form-label" for="form2Example11">MSISDN</label>
+      </div> -->
+      <select class="form-select form-select-block" style="width: 200px; padding: 7px;" #msisdn>
+        <option value="" selected>Select MSISDN</option>
+        <option *ngFor="let m of msisdnListarray;" value="{{m.msisdn}}"> {{m.msisdn}} </option>
+      </select><br>
+      <label class="form-label" for="form2Example11">Select MSISDN here</label>
+
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3 mx-2">
+    <div class="col-4">
+      <div class="form-outline mb-2">
+        <input type="text" id="form2Example11" class="form-control" [(ngModel)]="token" maxlength="10"
+          placeholder="Enter Admin Token" />
+        <label class="form-label" for="form2Example11">Admin Token</label>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="row justify-content-center mx-2">
+    <div class="text-center pt-1 mb-5 pb-1 col-4">
+      <!-- <button class="btn btn-success btn-block fa-lg gradient-custom-2 mb-3" type="submit" (click)="setAdmin(msisdn.value)">Set Admin</button>     -->
+      <button class="btn btn-success btn-block fa-lg gradient-custom-2 mb-3" type="submit">Set Admin</button>     
+
+    </div>
+

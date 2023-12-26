@@ -1,0 +1,98 @@
+<app-navbar></app-navbar>
+<div class="row mx-2">
+  <div class="col-12"><h1 class=" d-flex justify-content-center">Create New Organization</h1></div>
+</div>
+<h4 class="p-3"><a style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: x-large;" href="javascript:history.go(-1);">Go Back</a></h4>   
+<div class="row mx-2">
+  <div class="col-12">
+    <form [formGroup]="createorgForm" (ngSubmit)="createorgFormSubmit(createorgForm.value)">
+
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-outline mb-2">
+            <input type="name" id="form2Example11" class="form-control" formControlName="organisationName"
+              placeholder="Enter Organisation Name" />
+            <label class="form-label" for="form2Example11">Organisation Name</label>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-outline mb-2">
+            <input type="name" id="form2Example11" class="form-control" formControlName="organisationAddress"
+              placeholder="Enter Organisation Address" />
+            <label class="form-label" for="form2Example11">Organisation Address</label>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-outline mb-2">
+            <input type="name" id="form2Example11" class="form-control" formControlName="vat"
+              placeholder="Enter VAT Number" />
+            <label class="form-label" for="form2Example11">VAT Number</label>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-outline mb-2">
+            <input type="name" id="form2Example11" class="form-control" formControlName="brn"
+              placeholder="Enter BRN Number" />
+            <label class="form-label" for="form2Example11">BRN Number</label>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-outline mb-2">
+            <input type="name" id="form2Example11" class="form-control" formControlName="adminToken"
+              placeholder="Enter Admin Token" />
+            <label class="form-label" for="form2Example11">Admin Token</label>
+          </div>
+        </div>
+      </div> -->
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-outline mb-2">
+            <input type="name" id="form2Example11" class="form-control" formControlName="orgContact"
+              placeholder="Enter Organisation Contact Number" />
+            <label class="form-label" for="form2Example11">Organisation Contact Number</label>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-outline mb-2">
+            <input type="name" id="form2Example11" class="form-control" formControlName="orgEmail"
+              placeholder="Enter Organisation Email-ID" />
+            <label class="form-label" for="form2Example11">Organisation Email-ID</label>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-outline mb-2">
+            <input type="name" id="form2Example11" class="form-control" formControlName="acctId"
+              placeholder="Enter Organisation AccountID" />
+            <label class="form-label" for="form2Example11">Organisation AccountID</label>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-outline mb-2">
+            <input type="name" id="form2Example11" class="form-control" formControlName="orgType"
+              placeholder="Enter Organisation Type" />
+            <label class="form-label" for="form2Example11">Organisation Type</label>
+          </div>
+        </div>
+      </div> -->
+      <div class="row justify-content-center">
+        <div class="text-center pt-1 mb-5 pb-1 col-6">
+          <button class="btn btn-success btn-block fa-lg gradient-custom-2 mb-3" [disabled]="createorgForm.invalid" type="submit">SUBMIT</button>    
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

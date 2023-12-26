@@ -1,0 +1,232 @@
+<app-navbar></app-navbar>
+
+<!-- Detail View for alert -->
+<div class="col-sm-12 " *ngIf="detailAlert">
+  <h2> Application Details #{{detailAlert.customerId}}</h2>
+  <h6 class="p-3"><a style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: medium;" href="javascript:history.go(-1);">Go Back</a></h6>   
+  <!-- <button style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: medium;" class="btn btn-warning" (click)="gotoDownloadPDF()">Preview Application</button> -->
+  <hr />
+  <div class="row">
+    <div  style="color: blue;"  class="col-sm-5">Application Old Token</div>
+    <div style="color: blue;" class="col-sm-6">{{detailAlert.originalToken}}</div>
+  </div>
+  <div class="row">
+    <div  style="color: blue;"  class="col-sm-5">Application New Token</div>
+    <div style="color: blue;" class="col-sm-6">{{detailAlert.newToken}}</div>
+  </div>
+  <div class="row">
+    <div style="color: rgb(197, 32, 123);" class="col-sm-5">Correlation Id</div>
+    <div style="color: rgb(197, 32, 123);" class="col-sm-6">{{detailAlert.correlationId}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">Application Date</div>
+    <div class="col-sm-6">{{detailAlert.applicationDate}}</div>
+  </div>
+  <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+  <div class="row">
+    <div class="col-sm-5"><b>Full Name</b></div>
+    <div class="col-sm-6">{{detailAlert.firstName}} {{" "}} {{detailAlert.lastName}}</div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-5"><b>Gender</b></div>
+    <div class="col-sm-6">{{detailAlert.gender}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5"><b>Date Of Birth</b></div>
+    <div class="col-sm-6">{{detailAlert.dob}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">Nationality</div>
+    <div class="col-sm-6">{{detailAlert.nationality}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">Document Type</div>
+    <div class="col-sm-6">{{detailAlert.documentType}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">Document ID</div>
+    <div class="col-sm-6">{{detailAlert.id}}</div>
+  </div>
+  <hr style="height:2px;border-width:0;color:gray;background-color:rgb(128, 128, 128)">
+  <div class="row">
+    <div style="color: rgb(32, 48, 197);" class="col-sm-5">MSISDN</div>
+    <div *ngIf="detailAlert.simDetail.msisdn.length<11">
+      <input class="form-control" placeholder="Assign New MSISDN" type="text" name="newmsisdn" [(ngModel)]="newmsisdn">
+      <button>Assign</button>
+    </div>
+    <div style="color: rgb(32, 48, 197);" class="col-sm-6">{{detailAlert.simDetail.msisdn}}</div>
+  </div>
+  <!--<div class="row" *ngIf="detailAlert.newCustomer!='yes'">
+    <div style="color: rgb(32, 48, 197);" class="col-sm-5">MSISDN Verification</div>
+    <div *ngIf="!detailAlert.SIMDetails.Status" style="color: rgb(32, 48, 197);" class="col-sm-5">New MSISDN Allocation</div>
+    <div style="color: rgb(32, 48, 197);" class="col-sm-6">{{detailAlert.SIMDetails.Status}}</div>
+  </div> -->
+  <div class="row">
+    <div class="col-sm-5">Address & Locality</div>
+    <div class="col-sm-6">{{detailAlert.address}}</div>
+  </div>
+
+  <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+  <div class="row">
+    <div class="col-sm-5 p-3"><b>Original Photo</b></div>
+    <div class="col-sm-3 p-3"><img [src]="imagePath" #selfie ></div>
+    <div class="col-sm-3 mt-5 ">
+      <div class="row">
+        
+      <button type="button" class="btn btn-primary"(click)="upload('selfie')" mdbRipple>{{approveBtn1txt}}</button>
+      
+      </div>
+      <br/>
+      <br/>
+      <!-- <div class="row" *ngIf="approveBtn1txt!='Validated'">
+        <input type="file" class="file-input" (change)="onFileSelected($event,'selfie')" #fileUpload>
+        <span>Upload a new document (.jpg)</span>
+        </div> -->
+    </div> 
+  </div>
+  <div class="row">
+    <div class="col-sm-5 p-3"><b>eKYC Photo</b></div>
+    <div class="col-sm-3 p-3"><img class="zoom" [src]="imagePath1"> </div>
+    <div class="col-sm-3 mt-5 ">
+      <div class="row">
+        <button type="button" class="btn btn-primary"(click)="upload('kycpic')" mdbRipple>{{approveBtn2txt}}</button>
+        </div>
+        <br/>
+        <br/>
+        
+        <div class="row" *ngIf="approveBtn2txt!='Validated'">
+        
+        <!-- <input type="file" class="file-input" (change)="onFileSelected($event,'kycpic')" #fileUpload/> 
+        <span>Upload a new document (.jpg)</span> -->
+        <!-- <small>Hover on the image to zoom or click on it to open it.</small> -->
+
+      </div>	
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5 p-3"><b>Verified Photo</b></div>
+    <div class="img-container" class="col-sm-3 p-3"><img [src]="imagePath2">
+      
+      <div *ngIf="detailAlert.Status=='verified'">
+
+        <div class="overlay">
+          Varified
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 mt-5 ">
+      <div class="row">
+        <button type="button" class="btn btn-primary"(click)="upload('verifiedpic')" mdbRipple>{{approveBtn3txt}}</button>
+        </div>
+        <br/>
+        <br/>
+        
+        <!-- <div class="row" *ngIf="approveBtn3txt!='Validated'">
+        
+          <input type="file" class="file-input" (change)="onFileSelected($event,'verifiedpic')" #fileUpload/> 
+          <span>Upload a new document (.jpg)</span>
+          
+        </div>	 -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5 p-3"><b>KYC Status</b></div>
+    <div class="col-sm-6 p-3"
+      [ngClass]="{'text-success': detailAlert.Status == 'Successful', 'text-warning': detailAlert.Status == 'Pending', 'text-danger': detailAlert.Status == 'Failed' }">
+      {{detailAlert.kycStatus}}
+    </div>
+  </div>
+  <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+  <div class="row" *ngIf="docPath!=null">
+    <div class="col-sm-5 p-3"><b>Documents</b></div>
+    <div class="col-sm-3 p-3">
+      <label #doc1>Doc Name: Permit</label>
+      
+      <img class="zoom" [src]="docPath" 
+      alt="Document not Uploaded"/></div>
+      
+    <div class="col-sm-3 mt-5 ">
+      <div class="row">
+        
+      <button type="button" class="btn btn-primary"(click)="upload('document')" mdbRipple>{{approveBtn1txt}}</button>
+      
+      </div>
+      <br/>
+      <br/>
+      <div class="row" *ngIf="approveBtn4txt!='Validated'">
+        <input type="file"  class="file-input" (change)="onFileSelected($event,'document');updatedocumentimg($event,'docname1')" #fileUpload>
+        <span>Upload a new document (.jpg)</span>
+        <small>Hover on the image to zoom or click on it to open it.</small>
+        </div>
+    </div> 
+  </div>
+  
+  <div class="row" *ngIf="docpath2!=null">
+    <div class="col-sm-5 p-3"><b>Documents</b></div>
+    <div class="col-sm-3 p-3">
+      <label>Doc Name: {{docName2}}</label>
+      
+      <img class="zoom" [src]="docpath2" alt="Document not Uploded"/>
+      
+      
+    </div>
+      
+    <div class="col-sm-3 mt-5 ">
+      <div class="row">
+        
+      <button type="button" class="btn btn-primary"(click)="upload('document')" mdbRipple>{{approveBtn1txt}}</button>
+      
+      </div>
+      <br/>
+      <br/>
+      <div class="row" *ngIf="approveBtn4txt!='Validated'">
+        <input type="file" class="file-input" (change)="onFileSelected($event,'document');updatedocumentimg($event,'docname2')" #fileUpload>
+        <span>Upload a new document (.jpg)</span>
+        <small>Hover on the image to zoom or click on it to open it.</small>
+        
+        </div>
+    </div> 
+  
+  </div>
+  <div *ngIf="detailAlert.Status!='Activated'">
+  <div class="row justify-content-center">
+    <div class="p-3"><button type="button" class="btn btn-success" (click)="activateProfile()" mdbRipple>{{BtnName}}</button>
+    </div>
+    <div class="p-3"><button type="button" class="btn btn-danger" mdbRipple (click)="updateStatus('reject',reasons.value)">Reject with Reason</button>
+    </div>
+  </div>
+   <div class="row justify-content-center">
+  <div class="p-3">
+    <select type="select" class="btn btn-danger" #reasons >
+      <option value="">--Please choose a rejection reason--</option>
+          <option value="Invalid ID Proof">Invalid ID Proof</option>
+          <option value="Invalid Permit">Invalid Permit</option>
+          <option value="Visa Expired">Visa Expired</option>
+          <option value="Customer Photo is not clear">Customer Photo is not clear</option>
+          <option value="ICTA Verification Failed">ICTA Verification Failed</option>
+          <option value="Address Proof (Utility Bill or Other Proof of Address): missing/incorrect/not clear">Address Proof (Utility Bill or Other Proof of Address): missing/incorrect/not clear</option>
+          <option value="Proof (Utility Bill or Other Proof of Address): missing/incorrect/not clear">Proof (Utility Bill or Other Proof of Address): missing/incorrect/not clear</option>
+          <option value="Consent Form from Owner for Address Proof: missing/incorrect/not clear">Consent Form from Owner for Address Proof: missing/incorrect/not clear</option>
+          <option value="Letter from Organisation to act on its behalf: missing/incorrect/not clear">Letter from Organisation to act on its behalf: missing/incorrect/not clear</option>
+          <option value="Utility bill of Organisation or any other Proof of Address: missing/incorrect/not clear">Utility bill of Organisation or any other Proof of Address: missing/incorrect/not clear</option>
+          <option value="Certificate of Incorporation: missing/incorrect/not clear">Certificate of Incorporation: missing/incorrect/not clear</option>
+          <option value="BRN document: missing/incorrect/not clear">BRN document: missing/incorrect/not clear</option>
+          <option value="In Valid Tourist Enterprise License or Tourist Accommodation Certificate: missing/incorrect//not clear">In Valid Tourist Enterprise License or Tourist Accommodation Certificate: missing/incorrect//not clear</option>
+          <option value="Incomplete eKYC documents"> Incomplete eKYC documents</option>
+          
+    </select>
+  </div>
+  </div>
+  
+
+</div>
+<div class="row justify-content-center" *ngIf="detailAlert.Status=='activated' || detailAlert.Status=='Activated'">
+  <div class="p-3"><button type="button" class="btn btn-success"  mdbRipple>Already Activated</button>
+  </div>
+</div>
+
+</div>
+<!-- End of Detailed Alert view -->

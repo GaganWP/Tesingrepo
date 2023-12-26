@@ -1,0 +1,128 @@
+<app-navbar></app-navbar>
+<div class="col-12 d-flex justify-content-center">
+  <button class="btn btn-info ml-2 mb-2 mt-0 text-end" (click)="printPdf(this)"> Print/Download</button>
+  <h6 class="p-3"><a style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: medium;" href="javascript:history.go(-1);">Go Back</a></h6>   
+    </div>
+
+<div class="col-sm-12 " *ngIf="detailAlert"  id="content" #content>
+  <h2> Application Details #{{detailAlert.ApplicationId}}</h2> 
+  <h6><b>{{currentDate | date:'yyyy-MM-dd'}}</b></h6>
+  <!-- <button class="btn btn-warning" (click)="gotoDownloadPDF()">Preview Application</button> -->
+  <hr />
+  <div class="row">
+    <div  style="color: blue;"  class="col-sm-5">Application Token</div>
+    <div style="color: blue;" class="col-sm-6">{{detailAlert.token}}</div>
+  </div>
+  <div class="row">
+    <div style="color: rgb(197, 32, 123);" class="col-sm-5">Correlation Id</div>
+    <div style="color: rgb(197, 32, 123);" class="col-sm-6">{{detailAlert.correlation_id}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">Application Date</div>
+    <div class="col-sm-6">{{detailAlert.ApplicationDate}}</div>
+  </div>
+  <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+  <div class="row">
+    <div class="col-sm-5"><b>Full Name</b></div>
+    <div class="col-sm-6">{{detailAlert.FullName}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5"><b>Gender</b></div>
+    <div class="col-sm-6">{{detailAlert.Gender}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5"><b>Date Of Birth</b></div>
+    <div class="col-sm-6">{{detailAlert["Date Of Birth"]}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">Nationality</div>
+    <div class="col-sm-6">{{detailAlert.Nationality}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">Document Type</div>
+    <div class="col-sm-6">{{detailAlert.DocumentType}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">Document ID</div>
+    <div class="col-sm-6">{{detailAlert.DocumentId}}</div>
+  </div>
+  <hr style="height:2px;border-width:0;color:gray;background-color:rgb(128, 128, 128)">
+  <div class="row" hidden>
+    <div style="color: rgb(32, 48, 197);" class="col-sm-5">MSISDN</div>
+    <div *ngIf="!detailAlert.SIMDetails.MSISDN">
+      <input class="form-control" placeholder="Assign New MSISDN" type="text" name="newmsisdn" [(ngModel)]="newmsisdn">
+      <button>Assign</button>
+    </div>
+    <div style="color: rgb(32, 48, 197);" class="col-sm-6">{{detailAlert.SIMDetails.MSISDN}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">Address & Locality</div>
+    <div class="col-sm-6">{{detailAlert.address}}</div>
+  </div>
+
+  <hr style="height:2px;border-width:0;color:gray;background-color:gray" hidden>
+
+  <div class="row">
+    <div class="col-sm-5 p-3"><b>Original Photo</b></div>
+    <div class="col-sm-3 p-3"><img [src]="imagePath" #selfie width="200" height="250" ></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5 p-3"><b>eKYC Photo</b></div>
+    <div class="col-sm-3 p-3"><img [src]="imagePath1" width="200" height="250"> </div>
+    
+  </div>
+  <div class="row">
+    <div class="col-sm-5 p-3"><b>Verified Photo</b></div>
+    <div class="img-container" class="col-sm-3 p-3"><img [src]="imagePath2" width="200" height="250">
+      
+      <div *ngIf="detailAlert.Status=='verified'">
+
+        <div class="overlay">
+          Verified
+        </div>
+      </div>
+    </div>
+   
+  </div>
+  <div class="row">
+    <div class="col-sm-5 p-3"><b>KYC Status</b></div>
+    <div class="col-sm-6 p-3"
+      [ngClass]="{'text-success': detailAlert.Status == 'Successful', 'text-warning': detailAlert.Status == 'Pending', 'text-danger': detailAlert.Status == 'Failed' }">
+      {{detailAlert.Status}}
+    </div>
+  </div>
+  <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+</div>
+
+
+
+					<div class="row">
+						<div class="col-sm-5 p-3"><b>Documents</b></div>
+						<div class="col-sm-3 p-3">
+							<label>Doc Name: {{docName}}</label>
+              <div class="img-container" class="col-sm-3 p-3"><img [src]="docPath" width="200" height="250">
+							</div>
+              </div>
+              </div>
+              
+							
+						
+					
+					<div class="row" *ngIf="docpath2!=null">
+						<div class="col-sm-5 p-3"><b>Documents</b></div>
+						<div class="col-sm-3 p-3">
+							<label>{{docName2}}</label>
+							<div class="img-container" class="col-sm-3 p-3"><img [src]="docpath2" width="200" height="250"></div>
+
+							
+						</div>
+            </div>
+
+							
+						
+
+
+  <div class="col-12 d-flex justify-content-center">
+   <label><i>This is an eKYC System generated report. Kindly print this responsibly.</i></label>   
+
+  </div>

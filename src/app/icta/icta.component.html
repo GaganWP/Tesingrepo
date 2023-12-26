@@ -1,0 +1,124 @@
+<app-navbar></app-navbar>
+
+<div class="col-md-10">
+  <div class="row p-0">
+    <div class="col">
+
+      <!-- Alerts Table -->
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="p-3">ICTA Manual Record Check</h3>
+        
+          <h6 class="p-3"><a style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: medium;" href="javascript:history.go(-1);">Go Back</a></h6>   
+          
+        </div>
+    </div>
+</div>
+</div>
+</div>
+  
+
+<div class="row mx-2 ">
+  <div class="col-12">
+
+  <form [formGroup]="ManageForm" (ngSubmit)="ManageFormSubmit(ManageForm.value)">
+
+    <div class="row">
+      <div class="col-12">
+        <div *ngIf="UserType=='admin'">
+          <h1> Check ICTA Record for NIC/Passport </h1>
+        </div>
+       
+      </div>
+    </div>
+    
+<div class="row justify-content-center">
+  <div class="col-6">
+    <div class="form-outline mb-2">
+      <select formControlName="chooseId" class="form-control">
+        <option ng-repeat="passport">Passport</option>
+        <option ng-repeat="nid">National ID</option>
+      </select>
+      <input type="id" id="id" class="form-control" formControlName="id"
+        placeholder="Enter NIC/Passport ID" />
+        
+      
+    </div>
+  </div>
+</div>
+    
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="form-outline mb-2">
+          <select class="form-control" formControlName="gender">
+            <option id="na">Choose Gender</option>
+            <option id="male">M</option>
+            <option id="female">F</option>
+          </select>
+    
+           
+        </div>
+      </div>
+    </div>
+
+    
+<div class="row justify-content-center">
+  <div class="col-6">
+    <div class="form-outline mb-2">
+      <label class="text-primary config">Choose Date of Birth</label>
+      <input class="form-control" placeholder="Search" type="date" formControlName="dateOfBirth">
+      
+    </div>
+  </div>
+</div>
+   
+<div class="row justify-content-center">
+  <div class="col-6">
+    <div class="form-outline mb-2">
+      <label class="text-primary config">Choose Country Code</label>
+      <input class="form-control" placeholder="country" type="text" formControlName="nationalityCode">
+      
+    </div>
+  </div>
+</div>
+   
+    
+<div class="row justify-content-center">
+  <div class="col-6">
+    <div class="form-outline mb-2">
+      <select class="form-control" formControlName="userType">
+        <option ng-repeat="na">Choose Type</option>
+        <option ng-repeat="RESIDENT">RESIDENT</option>
+        <option ng-repeat="SELF">SELF</option>
+        <option ng-repeat="TOURIST">TOURIST</option>
+      </select>
+
+       
+    </div>
+  </div>
+</div>
+    
+ 
+    
+  <div class="row justify-content-center">
+    <div class="text-center pt-1 mb-5 pb-1 col-6">
+      <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">SUBMIT</button>    
+    </div>
+  </div>
+  </form>
+
+  <div class="row justify-content-center" *ngIf="nicNum!=null || passportNum!=null">
+    <h6>Result</h6>
+    <br/>
+    <table>
+    <tr>ID: {{nicNum}}{{passportNum}}</tr>
+    <tr>Name: {{firtName}} {{maidenName}} {{lastName}}</tr>
+    <tr>DOB: {{dateOfBirth}}</tr>
+    <tr>Corr Id: {{correlationId}}</tr>
+    <tr><img [src]="photograph"></tr>
+  </table>
+  </div>
+
+
+</div>
+</div>

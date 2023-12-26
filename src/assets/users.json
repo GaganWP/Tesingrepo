@@ -1,0 +1,444 @@
+[
+    {
+    "userName":"admin",
+    "password":"admin#$@1",
+    "type":"Agent",
+    "msisdn":"2307767563",
+    "activations":"10",
+    "email":"admin@chili.mu",
+    "fullName":"Shop Agent"
+ 
+    },
+    {
+        "userName":"admin",
+        "password":"admin123",
+        "type":"Agent",
+        "msisdn":"2307767563",
+        "activations":"10",
+        "email":"admin@chili.mu",
+        "fullName":"Administrator"
+    
+    },
+
+    {
+        "userName":"SUZON",
+        "password":"admin123",
+        "type":"Agent",
+        "msisdn":"23052779422",
+        "activations":"34",
+        "email":"admin@chili.mu",
+        "fullName":"SUZON"
+    
+    },
+    {
+        "userName":"ATCHIA",
+        "password":"atchi467",
+        "type":"Agent",
+        "msisdn":"23054941455",
+        "activations":"30",
+        "email":"admin@chili.mu",
+        "fullName":"ATCHIA"
+    
+    },
+    {
+        "userName":"ATCHIA",
+        "password":"atchi@549",
+        "type":"Agent",
+        "msisdn":"23054967717",
+        "activations":"18",
+        "email":"admin@chili.mu",
+        "fullName":"ATCHIA"
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"23057042437",
+        "activations":"9",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+    {
+        "userName":"ISLANDCELL",
+        "password":"island478",
+        "type":"Agent",
+        "msisdn":"23057105031",
+        "activations":"7",
+        "email":"admin@chili.mu",
+        "fullName":"ISLANDCELL"
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"23057154444",
+        "activations":"19",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"23057177004",
+        "activations":"7",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+    {
+        "userName":"MILLA",
+        "password":"milla943",
+        "type":"Agent",
+        "msisdn":"23057378455",
+        "activations":"7",
+        "email":"admin@chili.mu",
+        "fullName":"MILLA"
+    
+    },
+    {
+        "userName":"LIBRE",
+        "password":"libre052",
+        "type":"Agent",
+        "msisdn":"23057519830",
+        "activations":"6",
+        "email":"admin@chili.mu",
+        "fullName":"KEN LIBRE"
+    
+    },
+    {
+        "userName":"AH TECH",
+        "password":"tech785",
+        "type":"Agent",
+        "msisdn":"23057596918",
+        "activations":"62",
+        "email":"admin@chili.mu",
+        "fullName":"AH TECH"
+    
+    },
+    {
+        "userName":"KING",
+        "password":"king749",
+        "type":"Agent",
+        "msisdn":"23057618040",
+        "activations":"14",
+        "email":"admin@chili.mu",
+        "fullName":"KING STORE"
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"23057656780",
+        "activations":"10",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"23057706845",
+        "activations":"6",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"23057740865",
+        "activations":"15",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+    {
+        "userName":"CCALTEL SHOP",
+        "password":"ccaltel689",
+        "type":"Agent",
+        "msisdn":"23057778182",
+        "activations":"29",
+        "email":"admin@chili.mu",
+        "fullName":"CCALTEL SHOPr"
+    
+    },
+    {
+        "userName":"BEAUPLAN",
+        "password":"beauplan741",
+        "type":"Agent",
+        "msisdn":"23057789728",
+        "activations":"6",
+        "email":"admin@chili.mu",
+        "fullName":"BEAUPLAN"
+    
+    },
+    {
+        "userName":"VEERPEN",
+        "password":"veerpen@543",
+        "type":"Agent",
+        "msisdn":"23057837300",
+        "activations":"9",
+        "email":"admin@chili.mu",
+        "fullName":"S VEERPEN"
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"23057865355",
+        "activations":"8",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+    {
+        "userName":"SAOUD",
+        "password":"saoud945",
+        "type":"Agent",
+        "msisdn":"23057922778",
+        "activations":"6",
+        "email":"admin@chili.mu",
+        "fullName":"SAOUD"
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"23057975040",
+        "activations":"12",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+    {
+        "userName":"LAKSH",
+        "password":"laksh@469",
+        "type":"Agent",
+        "msisdn":"23057991262",
+        "activations":"32",
+        "email":"admin@chili.mu",
+        "fullName":"LAKSH TRANDING"
+    
+    },
+    {
+        "userName":"TOOFANNY",
+        "password":"toofanny646",
+        "type":"Agent",
+        "msisdn":"23058281104",
+        "activations":"8",
+        "email":"admin@chili.mu",
+        "fullName":"TOOFANNY COLLECTION"
+    
+    },
+    {
+        "userName":"ASHA",
+        "password":"asha390",
+        "type":"Agent",
+        "msisdn":"23058284250",
+        "activations":"8",
+        "email":"admin@chili.mu",
+        "fullName":"ASHA BOUTIK"
+    
+    },
+    {
+        "userName":"RAMSAHA",
+        "password":"reshama378",
+        "type":"Agent",
+        "msisdn":"23058559285",
+        "activations":"8",
+        "email":"admin@chili.mu",
+        "fullName":"RAMSAHA"
+    
+    },
+    {
+        "userName":"KASSIM",
+        "password":"kassim956",
+        "type":"Agent",
+        "msisdn":"23058583670",
+        "activations":"22",
+        "email":"admin@chili.mu",
+        "fullName":"KASSIM SHOP"
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"23058644000",
+        "activations":"18",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+   {
+        "userName":"SABINE",
+        "password":"sabine732",
+        "type":"Agent",
+        "msisdn":"23058688888",
+        "activations":"10",
+        "email":"admin@chili.mu",
+        "fullName":"SABINE"
+    
+    },
+    {
+        "userName":"BOLAKY",
+        "password":"bolaky@456",
+        "type":"Agent",
+        "msisdn":"23058845555",
+        "activations":"11",
+        "email":"admin@chili.mu",
+        "fullName":"BOLAKY TRANDING"
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"23058885600",
+        "activations":"9",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"23058918019",
+        "activations":"9",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+    {
+        "userName":"TEXAS",
+        "password":"texas841",
+        "type":"Agent",
+        "msisdn":"23058931333",
+        "activations":"13",
+        "email":"admin@chili.mu",
+        "fullName":"TROUGE TEXAS SHOP"
+    
+    },
+    {
+        "userName":"SABINE",
+        "password":"sabine378",
+        "type":"Agent",
+        "msisdn":"23058933333",
+        "activations":"10",
+        "email":"admin@chili.mu",
+        "fullName":"SABINE"
+    
+    },
+    {
+        "userName":"PATRON",
+        "password":"patron865",
+        "type":"Agent",
+        "msisdn":"23058936450",
+        "activations":"18",
+        "email":"admin@chili.mu",
+        "fullName":"PATRON STORE"
+    
+    },
+    {
+        "userName":"NINA",
+        "password":"nina123",
+        "type":"Agent",
+        "msisdn":"23058946064",
+        "activations":"11",
+        "email":"admin@chili.mu",
+        "fullName":"NINA"
+    
+    },
+    {
+        "userName":"BOUTIK",
+        "password":"boutik321",
+        "type":"Agent",
+        "msisdn":"23059123446",
+        "activations":"7",
+        "email":"admin@chili.mu",
+        "fullName":"SUN BOUTIK MARKET"
+    
+    },
+    {
+        "userName":"CAFE",
+        "password":"cafe756",
+        "type":"Agent",
+        "msisdn":"23059162827",
+        "activations":"6",
+        "email":"admin@chili.mu",
+        "fullName":"CAFÉ METRE"
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"23059181389",
+        "activations":"13",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"23059225266",
+        "activations":"6",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+    {
+        "userName":"SHELL",
+        "password":"shell@432",
+        "type":"Agent",
+        "msisdn":"23059226332",
+        "activations":"13",
+        "email":"admin@chili.mu",
+        "fullName":"SHELL M.L"
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"23059300093",
+        "activations":"16",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+    {
+        "userName":"",
+        "password":"",
+        "type":"Agent",
+        "msisdn":"2307767563",
+        "activations":"8",
+        "email":"admin@chili.mu",
+        "fullName":""
+    
+    },
+    {
+        "userName":"TRIVENI",
+        "password":"triveni456",
+        "type":"Agent",
+        "msisdn":"23059796600",
+        "activations":"9",
+        "email":"admin@chili.mu",
+        "fullName":"BLEU TRIVENI"
+    
+    }
+    
+]

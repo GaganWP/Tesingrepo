@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+<div class="row mx-2">
+  <div class="col-12"><h1 class=" d-flex justify-content-center">Organization List</h1></div>
+</div>
+<h4 class="p-3"><a style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: x-large;" href="javascript:history.go(-1);">Go Back</a></h4>   
+<div class="row mx-2">
+  <div class="col-4">
+    <input type="userName" id="form2Example11" class="form-control col-8" [(ngModel)]="serachdata" autocomplete="off"
+    placeholder="Search by Token,AcctId,Name" />
+  </div>
+  <div class="col-4">
+      <h5 style="font-weight: bold;">Organisation count({{TotalOrganisations}})</h5>
+  </div>
+  <div class="col-3">
+    <button  class=" btn btn-warning mx-1" (click)="CreatenewOrganisation()">Add New Corporate  Organisation</button>
+  </div>
+  
+</div>
+
+<div class="col-12 mt-1">
+  <table  style="table-layout: fixed ; width: 100%;" class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <!-- <th>Sl No.</th> -->
+        <th>Organisation Name</th>
+        <th>Token</th>
+        <th>PIN</th>
+        <th>AcctId</th>
+        <th>Contact Number</th>
+        <!-- <th>Admin</th> -->
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <tr *ngFor='let org of orglist | filterfororganisation: serachdata'>
+        <!-- <td>{{i+1}}</td> -->
+        <td>{{org.organisationName}}</td>
+        <td>{{org.orgToken}}</td>
+        <td>{{org.orgPin}}</td>
+        <td>{{org.acctId}}</td>
+        <td>{{org.contact}}</td>
+        <!-- <td>{{firstName}}</td> -->
+        <td>{{org.orgType}}</td>
+        <td>
+          <!-- pass whole org in below function and store in localStorage to access from next page -->
+          <button  class=" btn btn-primary mx-1" (click)="showOrgDetails(org)">OPEN</button>
+
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+</div>
+
+
+

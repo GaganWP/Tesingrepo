@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+<div class="row mx-2">
+  <div class="col-12"><h1 class=" d-flex justify-content-center">Assign MSISDN</h1></div>
+</div>
+<h4 class="p-3"><a style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: x-large;" href="javascript:history.go(-1);">Go Back</a></h4>
+<div class="row mx-2">
+  <div class="col-12">
+
+    <form [formGroup]="MSISDNassignForm" (ngSubmit)="MSISDNassignFormSubmit(MSISDNassignForm.value)">
+
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-outline mb-2">
+            <input type="tel" id="form2Example11" class="form-control" formControlName="MSISDN1" maxlength="8"
+              placeholder="Enter MSISDN1" />
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-outline mb-2">
+            <input type="tel" id="form2Example11" class="form-control" formControlName="MSISDN2" maxlength="8"
+              placeholder="Enter MSISDN2" />           
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-outline mb-2">
+            <input type="tel" id="form2Example11" class="form-control" formControlName="MSISDN3" maxlength="8"
+              placeholder="Enter MSISDN3" />        
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-outline mb-2">
+            <input type="tel" id="form2Example11" class="form-control" formControlName="MSISDN4" maxlength="8"
+              placeholder="Enter MSISDN4" />
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-outline mb-2">
+            <input type="tel" id="form2Example11" class="form-control" formControlName="MSISDN5" maxlength="8"
+              placeholder="Enter MSISDN5" />
+          </div>
+        </div>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="text-center pt-1 mb-5 pb-1 col-6">
+          <button class="btn btn-success btn-block  mb-3" type="submit">Submit</button>    
+        </div>
+    </div>
+    </form>
+   
+
+    
+</div>

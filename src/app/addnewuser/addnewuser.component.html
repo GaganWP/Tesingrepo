@@ -1,0 +1,149 @@
+<app-navbar></app-navbar>
+<h6 class="p-3"><a style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: medium;" href="javascript:history.go(-1);">Go Back</a></h6>   
+
+<div class="row mx-2 ">
+  <div class="col-12">
+
+  <form [formGroup]="ManageForm" (ngSubmit)="ManageFormSubmit(ManageForm.value)">
+
+    <div class="row">
+      <div class="col-12">
+        <div *ngIf="UserType=='admin'">
+          <h1> Add New Admin </h1>
+        </div>
+        <div *ngIf="UserType=='Agent'" class=" d-flex justify-content-center">
+          <h1>Add New Agent </h1>
+        </div>
+        <div *ngIf="UserType=='Dealer'" class=" d-flex justify-content-center">
+          <h1> Add New Dealer </h1>
+        </div>
+      </div>
+    </div>
+    
+<div class="row justify-content-center"  >
+  <div class="col-6">
+    <div class="form-outline mb-2">
+      <input type="name" id="form2Example11" class="form-control" formControlName="name"
+        placeholder="Enter Name" />
+
+      <div *ngIf="UserType=='admin'">
+      <label class="form-label" for="form2Example11">Admin Name</label>
+      </div>
+      <div *ngIf="UserType=='Agent'">
+      <label class="form-label" for="form2Example11">Agent Name</label>
+      </div>
+      <div *ngIf="UserType=='Dealer'">
+      <label class="form-label" for="form2Example11">Dealer Name</label>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="form-outline mb-2">
+          <input type="tel" id="form2Example11" class="form-control" formControlName="msisdn"
+            placeholder="Enter MSISDN" />
+    
+            <div *ngIf="UserType=='admin'">
+              <label class="form-label" for="form2Example11">Admin MSISDN</label>
+            </div>
+            <div *ngIf="UserType=='Agent'">
+              <label class="form-label" for="form2Example11">Agent MSISDN</label>
+            </div>
+            <div *ngIf="UserType=='Dealer'">
+              <label class="form-label" for="form2Example11">Dealer MSISDN</label>
+            </div>
+    
+    
+        </div>
+      </div>
+    </div>
+
+    
+<div class="row justify-content-center">
+  <div class="col-6">
+    <div class="form-outline mb-2">
+      <input type="text" id="form2Example11" class="form-control" formControlName="businessName"
+        placeholder="Enter BusinessName" />
+
+        <div *ngIf="UserType=='admin'">
+          <label class="form-label" for="form2Example11">Admin BusinessName</label>
+        </div>
+        <div *ngIf="UserType=='Agent'">
+           <label class="form-label" for="form2Example11">Agent BusinessName</label>
+       </div>
+       <div *ngIf="UserType=='Dealer'">
+           <label class="form-label" for="form2Example11">Dealer BusinessName</label>
+        </div>
+    </div>
+  </div>
+</div>
+   
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="form-outline mb-2">
+        <input type="text" id="form2Example11" class="form-control" formControlName="nid"
+          placeholder="Enter NID number" />
+          <div *ngIf="UserType=='admin'">
+        <label class="form-label" for="form2Example11">&nbsp;&nbsp;Admin NID Number</label>
+          </div>
+          <div *ngIf="UserType=='Agent'">
+        <label class="form-label" for="form2Example11">Agent NID Number</label>
+          </div>
+          <div *ngIf="UserType=='Dealer'">
+        <label class="form-label" for="form2Example11">Dealer NID Number</label>
+          </div>
+  
+      </div>
+
+    </div>
+  </div>
+    
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="form-outline mb-2">
+        <input type="text" id="form2Example11" class="form-control" formControlName="userName"
+          placeholder="Enter UserName" />
+          <div *ngIf="UserType=='admin'">
+        <label class="form-label" for="form2Example11">&nbsp;&nbsp;Admin UserName</label>
+          </div>
+          <div *ngIf="UserType=='Agent'">
+        <label class="form-label" for="form2Example11">Agent UserName</label>
+          </div>
+          <div *ngIf="UserType=='Dealer'">
+        <label class="form-label" for="form2Example11">Dealer UserName</label>
+          </div>
+  
+      </div>
+
+    </div>
+  </div>
+    
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="form-outline mb-2">
+        <input type="text" id="form2Example11" class="form-control" formControlName="password"
+          placeholder="Enter Password" />
+          <div *ngIf="UserType=='admin'">
+        <label class="form-label" for="form2Example11">&nbsp;&nbsp;Admin Password</label>
+          </div>
+          <div *ngIf="UserType=='Agent'">
+        <label class="form-label" for="form2Example11">Agent Password</label>
+          </div>
+          <div *ngIf="UserType=='Dealer'">
+        <label class="form-label" for="form2Example11">Dealer Password</label>
+          </div>
+      </div>
+    </div>
+  </div>
+    
+  <div class="row justify-content-center">
+    <div class="text-center pt-1 mb-5 pb-1 col-6">
+      <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">SUBMIT</button>    
+    </div>
+  </div>
+  </form>
+
+</div>
+</div>

@@ -1,33 +1,88 @@
+<app-navbar></app-navbar>
+<div #sucess class="success alert-success success-dismissible fade show" role="alert">
+	<button type="button" class="close" aria-label="Close" >
+	  <span aria-hidden="true">&times;</span>
+	</button>
+	<!-- <strong>Login Successful!</strong> User Access Level: {{utype}} User | MSISDN : {{msisdn}} -->
+	<strong>Login Successful!</strong> User Access Level: Admin User
+  </div>
 <div class="p-3">
 	<div class="row">
 		<!-- Filters -->
-		<div class="col-md-2">
+		
+		<div class="col-md-2" >
 			<h3>Filters</h3>
 			<br />
 			<div class="p-3">
-				<strong>Severity</strong>
+				<strong style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: medium;">Filter eKYC Records</strong>
 				<hr />
-				<a href="#">WIP</a>
+				<label class="text-primary config">Choose Date</label>
+				<input class="form-control" placeholder="Search" type="date" [(ngModel)]="dateStr" (change)="getRecords('')">
+				<label class="text-primary config">Choose Date Range</label>
+				<input class="form-control" placeholder="Search" type="date" [(ngModel)]="fromDateStr" >
+				<input class="form-control" placeholder="Search" type="date" [(ngModel)]="toDateStr" (change)="getRecordsRange('','')">
+				
 				<br />
-				<a href="#">WIP</a>
+				<label class="text-primary config">Enter Token#</label>
+				<input class="form-control" placeholder="Search" type="text" [(ngModel)]="searchString">
 			</div>
 			<div class="p-3">
-				<strong>Protocol</strong>
+				<strong style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: medium;">Reports</strong>
 				<hr />
-				<a href="#">WIP</a>
+				<!-- <br />
+				<label class="text-primary ">Agent Reports</label>
 				<br />
-				<a href="#">WIP</a>
+				<label class="text-primary ">Customer Reports</label> -->
+				<ul>
+					<li><label class="text-primary ">Reports</label> 
+						<ul>
+							<li><label class="text-primary config" (click)="gotoVerifiedreports()">Verified Customers</label></li>
+							<li><label class="text-primary config" (click)="gotoNonVerifiedreports()">Non-Verified Customers</label></li>
+							<li><label class="text-primary config" (click)="gotodocumentMissingreports()">Customer with Missing Document</label></li>
+							<li><label class="text-primary config" (click)="gotoContingencyReports()">Contingency Customers</label></li>
+							<li><label class="text-primary config" (click)="gotoExpiredTouristReports()"> Expired Tourists </label></li>
+							<li><label class="text-primary config" (click)="gotoSimlost('lost')"> SIM Lost  </label></li>
+							<li><label class="text-primary config" (click)="gotoSimlost('damage')"> SIM Damage  </label></li>
+
+
+							
+							<!-- <li><a href="USEPCreate.html">Regulation 5(d)</a></li>
+							<li><a href="USEPCreate.html">Regulation 6</a></li>
+							<li><a href="USEPCreate.html">Regulation 6</a></li> -->
+						</ul>
+					</li>
+				</ul>	
+			
 			</div>
 			<div class="p-3">
-				<strong>Client IP</strong>
+				<strong style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: medium;">User Reports</strong>
 				<hr />
-				<a href="#">WIP</a>
+				<label class="text-primary config" (click)="gotoCitizenReports()">Citizen</label>
 				<br />
-				<a href="#">WIP</a>
+				<label class="text-primary config" (click)="gotoResidentReports()">Non Citizen Resident</label>
+				<br />
+				<label class="text-primary config" (click)="gototouristReports()">Tourist</label>
+				<br />
+				<label class="text-primary config" (click)="gotoOrgnizationList()">Organizations</label>
+				<br />
+			</div>
+			<div class="p-3">
+				<strong style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: medium;">Configurations</strong>
+				<hr />
+				<label class="text-primary config" (click)="gotoManage('Dealer')">Manage Dealers</label>
+				<br />
+				<label class="text-primary config" (click)="gotoManage('Agent')">Manage Agents</label>
+				<br />
+				<label class="text-primary config" (click)="gotoPrefixManage()">Manage MSISDN Series</label>
+				<br />
+				<label class="text-primary config" (click)="gotoOtpManage()">Manage OTPs</label>
+				<br />
+				<label class="text-primary config" (click)="gotoICTAManage()">ICTA Check Record</label>
+				<!-- <label class="text-primary config">Contigency</label> -->
 				<br />
 			</div>
 		</div>
-
+	
 		<!-- Main Content + Detail View -->
 		<div class="col-md-10">
 			<div class="row p-0">
@@ -35,79 +90,190 @@
 
 					<!-- Alerts Table -->
 					<div class="row">
-						<div class="col-md-7">
-							<h3 class="p-3">Alerts ({{(alerts | table: searchString)?.length || 0}})</h3>
+						<div class="col-md-6">
+							<h3 class="p-3">Applications ({{(alerts | table: searchString)?.length || 0}})</h3>
 						</div>
 						<div class="col-md-5 p-3">
-							<input class="form-control" placeholder="Search" type="text" [(ngModel)]="searchString">
+							<h5 class="p-3">Welcome {{fullName}}! | Total Applications ({{activations}}) | <a href="/ekyc-bo">Logout</a></h5> 
+							
 						</div>
+
+						<div style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: medium;" class="col-md-5 p-3" *ngIf="div1">
+							<table>
+							<tr>Total eKYC Applications      : {{activationCount}}</tr>
+							<tr>Total Records Verified      :  {{verifiedCount}}</tr>
+							<tr>Total New Users Registered  :  {{newUsersRegistered}}</tr>
+							<tr>Total Old Users Registered  :  {{oldUsersRegistered}}</tr>
+							<tr>Total New Users Verified    :  {{newUsersVerified}}</tr>
+							<tr>Total Old Users Verified    :  {{oldUsersVerified}}</tr>
+							<tr>Failed due No Documents     :  {{noDocuments}}</tr>
+							<tr>Failed due to ICTA Error    :  {{failedIctaError}}</tr>
+							<tr>Total Contigency Verified   :  {{totalContingencyVerified}}</tr>
+							<tr>Total Residents Verified    :  {{residentsVerified}}</tr>
+							<tr>Total Citizens Verified     :  {{citizenVerified}}</tr>
+							<tr>Total Tourists Verified     :  {{touristVerified}}</tr>
+						   </table> 
+
+						</div>
+						<div class="col-md-5 p-3">
+							<button class="mt-1 btn btn-success" (click)="div1Function()">
+								{{statsBtntxt}}
+							</button>
+						</div>
+						
+						<div class="col-md-5 p-3">
+							<input class="form-control" placeholder="Search" type="text" [(ngModel)]="searchString">
+							<button  class="mt-1 btn btn-success mx-1" (click)="refresh()">Refresh</button>
+							<button type="button" (click)="exportTableToExcel()" class="mt-1 btn btn-success" >
+								<i class="fa fa-external-link" aria-hidden="true"></i>
+								Export to Excel</button>
+							
+						</div>
+						
 					</div>
+					<div class="alert alert-danger" role="alert" *ngIf="errorMsg!=''">
+						<label class="mt-1 mb-2 pb-1">{{errorMsg}}</label>
+					  </div>
+					<div class="alert alert-success" role="success" *ngIf="isLoading">
+						<label class="mt-1 mb-2 pb-1">Please wait data loading...</label>
+					  </div>
+					<!--<div class="d-flex justify-content-center">
+						<div class="spinner-border" role="status">
+						  <span class="sr-only">Loading...</span>
+						</div>
+					  </div> -->
+					  
 					<div>
-						<table class="table table-hover table-striped">
+						
+						<table id="applications-table" style="table-layout: fixed ; width: 100%;" class="table table-hover table-striped">
 							<thead>
 								<tr>
-									<th scope="col">AlertId</th>
-									<th scope="col">AlertTime</th>
-									<th scope="col">Severity</th>
-									<th scope="col">ClientIP</th>
-									<th scope="col">ServerIP</th>
-									<th scope="col">Protocol</th>
-									<th scope="col">ClientCountry</th>
+									<!-- <th scope="col">ApplnId</th>									 -->
+									<th scope="col">Token</th>									
+									<th scope="col">Customer MSISDN</th>									
+									<th scope="col">Full Name</th>
+									<th scope="col">Nationality</th>
+									<th scope="col">Subs Type</th>
+									<th scope="col">New User</th>
+									<th scope="col">Appln Mode</th>
+									<!-- <th scope="col">Appln Date</th> -->
+									<th scope="col">Status</th>
+									<th scope="col">Agent Name</th>
+									<th scope="col">Agent MSISDN</th>
+									<th scope="col">Agent Type</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr *ngFor="let alert of alerts | table: searchString:currentPage" (click)="openDetails(alert)" [ngClass]="{'table-primary': alert.AlertId == detailAlert?.AlertId}">
-									<td>{{alert.AlertId}}</td>
-									<td>{{alert.AlertTime}}</td>
-									<td [ngClass]="{'text-success': alert.Severity == 'Low', 'text-warning': alert.Severity == 'Medium', 'text-danger': alert.Severity == 'High' }">
-										{{alert.Severity}}
+								<tr *ngFor="let alert of alerts | table: searchString:currentPage"
+									(click)="openDetails(alert)"
+									[ngClass]="{'table-primary': alert.ApplicationId == detailAlert?.ApplicationId}">
+									<!-- <td>{{alert.ApplicationId}}</td>									 -->
+									<td>{{alert.token}}</td>									
+									<td>{{alert.SIMDetails.MSISDN}}</td>									
+									<td>{{alert.FullName}}</td>
+									<td>{{alert.Nationality}}</td>
+									<td>{{alert.UserType}}</td>
+									<td>{{alert.newCustomer}}</td>
+									<td>{{alert.ApplicationMode}}</td>
+									<!-- <td>{{alert.ApplicationDate}}</td> -->
+									<td
+										[ngClass]="{'text-success': alert.Status == 'Successful', 'text-warning': alert.Status == 'Pending', 'text-danger': alert.Status == 'Failed' }">
+										{{alert.Status}}
 									</td>
-									<td>{{alert.ClientIP}}</td>
-									<td>{{alert.ServerIP}}</td>
-									<td>{{alert.Protocol}}</td>
-									<td>{{alert.ClientCountry}}</td>
+									<td *ngIf="alert.agent!=null">{{alert.agent.agentName}}</td>
+									<td *ngIf="alert.agent!=null">{{alert.agent.msisdn}}</td>
+									<td *ngIf="alert.agent!=null">{{alert.agent.agentType}}</td>
 								</tr>
 							</tbody>
-							<pagination [totalItems]="(alerts | table: searchString)?.length || 0" [(ngModel)]="currentPage"></pagination>
+							<pagination [totalItems]="(alerts | table: searchString)?.length || 0" 
+								[(ngModel)]="currentPage"></pagination>
 						</table>
+					
 					</div>
-					<!-- End of Alerts Table -->
+					<!-- End of Alerts Table [itemsPerPage]="100" -->
 
 				</div>
 
 				<!-- Detail View for alert -->
 				<div class="col-sm-3" *ngIf="detailAlert">
-					<h2> Alert Details #{{detailAlert.AlertId}}</h2>
+					<h2> Application Details #{{detailAlert.ApplicationId}}</h2>
 					<hr />
 					<div class="row">
-						<div class="col-sm-6">AlertId</div>
-						<div class="col-sm-6">{{detailAlert.AlertId}}</div>
+						<div  style="color: blue;"  class="col-sm-6">Application Token</div>
+						<div style="color: blue;" class="col-sm-6">{{detailAlert.token}}</div>
 					</div>
 					<div class="row">
-						<div class="col-sm-6">AlertTime</div>
-						<div class="col-sm-6">{{detailAlert.AlertTime}}</div>
+						<div style="color: rgb(197, 32, 123);" class="col-sm-6">Correlation Id</div>
+						<div style="color: rgb(197, 32, 123);" class="col-sm-6">{{detailAlert.correlation_id}}</div>
 					</div>
 					<div class="row">
-						<div class="col-sm-6">Severity</div>
-						<div class="col-sm-6" [ngClass]="{'text-success': detailAlert.Severity == 'Low', 'text-warning': detailAlert.Severity == 'Medium', 'text-danger': detailAlert.Severity == 'High' }">
-							{{detailAlert.Severity}}
+						<div class="col-sm-6">Application Date</div>
+						<div class="col-sm-6">{{detailAlert.ApplicationDate}}</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-6"><b>Full Name</b></div>
+						<div class="col-sm-6">{{detailAlert.FullName}}</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6"><b>Gender</b></div>
+						<div class="col-sm-6">{{detailAlert.Gender}}</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6"><b>Date Of Birth</b></div>
+						<div class="col-sm-6">{{detailAlert["Date Of Birth"]}}</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">Nationality</div>
+						<div class="col-sm-6">{{detailAlert.Nationality}}</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">Document Type</div>
+						<div class="col-sm-6">{{detailAlert.DocumentType}}</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">Document ID</div>
+						<div class="col-sm-6">{{detailAlert.DocumentId}}</div>
+					</div>
+					<div class="row">
+						<div style="color: rgb(32, 48, 197);" class="col-sm-6">MSISDN</div>
+						<div style="color: rgb(32, 48, 197);" class="col-sm-6">{{detailAlert.SIMDetails.MSISDN}}</div>
+					</div>
+					<!--<div class="row"  *ngIf="detailAlert.newCustomer=='no'">
+						<div style="color: rgb(32, 48, 197);" class="col-sm-6">MSISDN Verification</div>
+						<div style="color: rgb(32, 48, 197);" class="col-sm-6">{{detailAlert.SIMDetails.Status}}</div>
+					</div> -->
+					<div class="row">
+						<div class="col-sm-6 p-3">Original Photo</div>
+						<div class="col-sm-6 p-3"><img [src]="imagePath"> </div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 p-3">eKYC Photo</div>
+						<div class="col-sm-6 p-3"><img [src]="imagePath1"> </div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 p-3">Verified Photo</div>
+						<div class="img-container" class="col-sm-6 p-3"><img [src]="imagePath2">
+							<div *ngIf="detailAlert.Status=='verified'">
+
+								<div class="overlay">
+									Verified
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-sm-6">ClientIP</div>
-						<div class="col-sm-6">{{detailAlert.ClientIP}}</div>
+						<div class="col-sm-6 p-3">KYC Status</div>
+						<div class="col-sm-6 p-3"
+							[ngClass]="{'text-success': detailAlert.Status == 'Successful', 'text-warning': detailAlert.Status == 'Pending', 'text-danger': detailAlert.Status == 'Failed' }">
+							{{detailAlert.Status}}
+						</div>
 					</div>
 					<div class="row">
-						<div class="col-sm-6">SeverIP</div>
-						<div class="col-sm-6">{{detailAlert.ServerIP}}</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">Protocol</div>
-						<div class="col-sm-6">{{detailAlert.Protocol}}</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">ClientCountry</div>
-						<div class="col-sm-6">{{detailAlert.ClientCountry}}</div>
+						<div class="p-3"><button type="button" class="btn btn-primary"  (click)="gotoActivation(detailAlert)">View Details</button>
+						</div>
+						<!-- <div class="p-3"><button type="button" class="btn btn-primary" mdbRipple>Documents</button>
+						</div> -->
 					</div>
 				</div>
 				<!-- End of Detailed Alert view -->
@@ -115,13 +281,14 @@
 
 			</div>
 			<!-- Statistics and Visualization -->
-			<h3 class="p-3">Statistics</h3>
+		<!--	<h3 class="p-3">Statistics</h3>
 			<div class="row">
 				<div class="col-md-4">
 					<div style="display: block">
-						<canvas baseChart [data]="alertsTypeData" [labels]="alertChartLabels" [chartType]="chartType" [colors]="chartColors" [legend]=legend></canvas>
+						<canvas baseChart [data]="alertsTypeData" [labels]="alertChartLabels" [chartType]="chartType"
+							[colors]="chartColors" [legend]=legend></canvas>
 					</div>
-					<h4 class="text-center">Alert Severity</h4>
+					<h4 class="text-center">KYC Statistics</h4>
 				</div>
 				<div class="col-md-4">
 					Placeholder
@@ -130,8 +297,16 @@
 					Placeholder
 				</div>
 
-			</div>
+			</div> -->
 			<!-- End Statistics -->
 		</div>
 	</div>
 </div>
+
+
+
+
+
+
+
+  

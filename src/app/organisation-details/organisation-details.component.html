@@ -1,0 +1,168 @@
+<app-navbar></app-navbar>
+<div class="row mx-2">
+  <div class="col-12"><h1 class=" d-flex justify-content-center">Organization Details</h1></div>
+</div>
+<h4 class="p-3"><a style="background-color:#dd49b6; color: rgb(247, 242, 246); font-size: x-large;" href="javascript:history.go(-1);">Go Back</a></h4>
+  <div class="row mx-2">
+    <div class="col-10 d-flex justify-content-end">
+      <button class="btn btn-success mx-1" (click)="setAdmin(organisationDetails.acctId,organisationDetails.orgPin,organisationDetails.orgToken)">Set Admin</button>
+      <button class="btn btn-warning mx-1" (click)="changeAdmin()">Change Admin</button>
+      <button class="btn btn-info mx-1" (click)="assignMSISDN(organisationDetails.acctId)">Assign MSISDN</button>
+      
+      
+    </div>
+  </div>
+<hr>
+<div class="row mx-2 d-flex justify-content-start">
+  <div class="col-10">
+
+    <div class="row">
+      <div class="col-4"><h5>Organisation Name</h5></div>
+      <div class="col-6">{{organisationDetails.organisationName}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-4"> <h5>Organisation Address</h5> </div>
+      <div class="col-6">{{organisationDetails.address}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-4"><h5>Organisation Type</h5></div>
+      <div class="col-6">{{organisationDetails.orgType}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-4"><h5>Organisation Contact Number</h5></div>
+      <div class="col-6">{{organisationDetails.contact}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-4"><h5>Email-ID</h5></div>
+      <div class="col-6">{{organisationDetails.email}}</div>
+      
+    </div>
+    <div class="row">
+      <div class="col-4"><h5>Admin</h5></div>
+      <div class="col-6">{{firstname}} {{lastName}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-4"><h5>Organisation Token</h5></div>
+      <div class="col-6">{{organisationDetails.orgToken}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-4"><h5>Organisation PIN</h5></div>
+      <div class="col-6">{{organisationDetails.orgPin}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-4"><h5>Account-ID</h5></div>
+      <div class="col-6">{{organisationDetails.acctId}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-4"><h5>BRN Number</h5></div>
+      <div class="col-6">{{organisationDetails.brn}}</div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-4"><h5>VAT Number</h5></div>
+      <div class="col-6">{{organisationDetails.vat}}</div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-4"><h5>Created Date</h5></div>
+      <div class="col-6">{{organisationDetails.createDate}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-4"><h5>Status</h5></div>
+      <div class="col-6">{{organisationDetails.status}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-4"><h5>MSISDN List</h5></div>
+      <select class="form-select" style="width: 200px;">
+        <option selected>MSISDN List</option>
+        <option *ngFor="let m of msisdnListarray;"> {{m.msisdn}} </option>
+      </select>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-4"><h5>Documents:</h5></div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-4">Authorisation Letter</div>
+      <div class="col-6">
+        <img [src]="Authimg" alt="Authimg" width="200" height="200">
+      </div>
+    </div>
+    <ng-template [ngIf]="Authimg2 !=null">
+      <div class="row mt-5">
+        <div class="col-4">Authorisation Letter Second Page</div>
+        <div class="col-6">
+          <img [src]="Authimg2"  alt="Authimg" width="200" height="200">
+        </div>
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="Authimg3 !=null">
+      <div class="row mt-5">
+        <div class="col-4">Authorisation Letter Last Page</div>
+        <div class="col-6">
+          <img [src]="Authimg3"  alt="Authimg" width="200" height="200">
+        </div>
+      </div>
+    </ng-template>
+    <div class="row mt-5" >
+      <div class="col-4">Incorporation Letter</div>
+      <div class="col-6">
+        <img [src]="Incorpoimg" alt="Incorpimg" width="200" height="250">
+      </div>
+    </div>
+    <div class="row mt-5" >
+      <div class="col-4">Address Proof</div>
+      <div class="col-6">
+        <img [src]="Utilityimg" alt="Addressimg" width="200" height="250">
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row mx-2">
+  <h2>Employee Table</h2>
+  <br>
+    <div class="col-md-5">
+      <input class="form-control" placeholder="Search by Token,ID Number or Name" type="text" [(ngModel)]="searchString">
+    </div>
+</div>
+
+<table id="applications-table" style="table-layout: fixed ; width: 100%;" class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Token</th>	
+      <th scope="col">Full Name</th>
+      <th scope="col">DOB</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Nationality</th>
+      <th scope="col">Document Number</th>
+      <th scope="col">New SIM</th>
+    </tr>
+  </thead>
+  <tbody>
+        <tr *ngFor="let emp of employeeList |  employee: searchString">
+          <td>{{emp.token}}</td>
+          <td>{{emp.firstName}} {{" "}} {{emp.lastName}}</td>
+          <td>{{emp.dob}}</td>
+          <td>{{emp.gender}}</td>
+          <td>{{emp.nationality}}</td>
+          <td>{{emp.originalDocId}}</td>
+          <td>{{emp.newCustomer}}</td>
+        </tr>
+  </tbody>
+</table>
+<!-- Detail View for alert -->
+
+<!-- End of Detailed Alert view -->

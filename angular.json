@@ -13,14 +13,29 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-alert-dashboard",
+            "outputPath": "dist/ekyc-bo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "human.{js,js.map}",
+                "input": "node_modules/@vladmandic/human/dist",
+                "output": "./human"
+              },
+              {
+              "glob": "*.{bin,json}",
+              "input": "node_modules/@vladmandic/human/models",
+              "output": "./human/models"
+              },
+              {
+              "glob": "*.wasm",
+              "input": "node_modules/@vladmandic/human/assets",
+              "output": "./human/assets"
+              }
             ],
             "styles": [
               "src/styles.css"
@@ -125,5 +140,7 @@
       }
     }
   },
-  "defaultProject": "angular-alert-dashboard"
+  "cli": {
+    "analytics": false
+  }
 }
